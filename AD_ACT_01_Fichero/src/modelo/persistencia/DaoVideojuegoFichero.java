@@ -5,12 +5,42 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import modelo.entidad.Videojuego;
 
 public class DaoVideojuegoFichero {
 
 	private static final String VIDEOJUEGO_FICHERO = "Videojuegos.txt";
+	
+	public List<Videojuego> listaViediojuego()throws Exception{
+		List<Videojuego> viedojuegos = new ArrayList<Videojuego>();
+		
+		try (FileReader fr = new FileReader(VIDEOJUEGO_FICHERO);
+			BufferedReader br = new BufferedReader(fr)){
+			
+			String linea = br.readLine();
+			while(linea != null) {
+				String[] cadenaPartida = linea.split("_");
+				String nombreVideojuego = cadenaPartida[0];
+				String compania = cadenaPartida[1];
+				int nota = Integer.parseInt(cadenaPartida[2]);
+				
+				Videojuego v = new Videojuego();
+				v.setNombre(nombreVideojuego);
+				v.setCompania(compania);
+				v.setNota(nota);
+				((List<Videojuego>) v).add(v);
+				
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		return null;
+		
+	}
 	
 	public Videojuego getByVideojuego(String nombre) throws Exception{
 		Videojuego videojuego = null;
