@@ -22,33 +22,49 @@ public class DaoVideojuegoFichero {
 	 * @return videojuego que contiene todos los videojuegos leídos del fichero.
 	 * @throws Exception si ocurre algún problema en el acceso o la lectura del fichero.
 	 */
-	public List<Videojuego> listaViediojuego()throws Exception{
-		List<Videojuego> videojuegos = new ArrayList<Videojuego>();
-		
-		try (FileReader fr = new FileReader(VIDEOJUEGO_FICHERO);
-			BufferedReader br = new BufferedReader(fr)){
-			
-			String linea = br.readLine();
-			while(linea != null) {
-				String[] cadenaPartida = linea.split("_");
-				String nombreVideojuego = cadenaPartida[0];
-				String compania = cadenaPartida[1];
-				int nota = Integer.parseInt(cadenaPartida[2]);
-				
-				Videojuego v = new Videojuego();
-				v.setNombre(nombreVideojuego);
-				v.setCompania(compania);
-				v.setNota(nota);
-				videojuegos.add(v);
-				
-				
-			}
-			
-		} catch (Exception e) {
-			throw e;
-		}
-		return null;
-		
+	public List<Videojuego> listaViediojuego() throws Exception {
+	    List<Videojuego> videojuegos = new ArrayList<>();
+
+	    try (FileReader fr = new FileReader(VIDEOJUEGO_FICHERO);
+	         BufferedReader br = new BufferedReader(fr)) {
+
+	        String linea = br.readLine();
+	        while (linea != null) {
+	            String[] cadenaPartida = linea.split("_");
+
+	            // Validamos que la línea tenga exactamente 3 partes
+	            if (cadenaPartida.length != 3) {
+	                System.err.println("Formato incorrecto en la línea: " + linea);
+	                linea = br.readLine();
+	                continue;
+	            }
+
+	            String nombreVideojuego = cadenaPartida[0];
+	            String compania = cadenaPartida[1];
+	            int nota;
+
+	            try {
+	                nota = Integer.parseInt(cadenaPartida[2]);  // Convertimos la nota a entero
+	            } catch (NumberFormatException e) {
+	                System.err.println("Nota inválida en la línea: " + linea);
+	                linea = br.readLine();
+	                continue;  // Continuamos con la siguiente línea si hay un error
+	            }
+
+	            Videojuego v = new Videojuego();
+	            v.setNombre(nombreVideojuego);
+	            v.setCompania(compania);
+	            v.setNota(nota);
+	            videojuegos.add(v);
+
+	            linea = br.readLine();
+	        }
+
+	    } catch (Exception e) {
+	        throw e;
+	    }
+
+	    return videojuegos;  
 	}
 	
 	/**
@@ -103,6 +119,7 @@ public class DaoVideojuegoFichero {
 		try(FileWriter fw = new FileWriter(VIDEOJUEGO_FICHERO,true);
 			BufferedWriter bw = new BufferedWriter(fw)){
 			bw.write(v.toString());
+			bw.write("\n");
 		}catch(Exception e) {
 			throw e;
 		}

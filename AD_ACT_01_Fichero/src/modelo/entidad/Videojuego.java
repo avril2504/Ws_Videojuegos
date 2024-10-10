@@ -8,6 +8,24 @@ public class Videojuego {
 	private int nota;
 	
 	
+	
+	
+	public Videojuego(String nombre, String compania, int nota) {
+		super();
+		this.nombre = nombre;
+		this.compania = compania;
+		this.nota = nota;
+	}
+	
+	
+	
+	public Videojuego() {
+		
+		
+	}
+
+
+
 	public String getNombre() {
 		return nombre;
 	}
