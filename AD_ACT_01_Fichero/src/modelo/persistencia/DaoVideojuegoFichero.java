@@ -32,7 +32,6 @@ public class DaoVideojuegoFichero {
 	        while (linea != null) {
 	            String[] cadenaPartida = linea.split("_");
 
-	            // Validamos que la línea tenga exactamente 3 partes
 	            if (cadenaPartida.length != 3) {
 	                System.err.println("Formato incorrecto en la línea: " + linea);
 	                linea = br.readLine();
@@ -44,11 +43,11 @@ public class DaoVideojuegoFichero {
 	            int nota;
 
 	            try {
-	                nota = Integer.parseInt(cadenaPartida[2]);  // Convertimos la nota a entero
+	                nota = Integer.parseInt(cadenaPartida[2]); 
 	            } catch (NumberFormatException e) {
 	                System.err.println("Nota inválida en la línea: " + linea);
 	                linea = br.readLine();
-	                continue;  // Continuamos con la siguiente línea si hay un error
+	                continue;  
 	            }
 
 	            Videojuego v = new Videojuego();
