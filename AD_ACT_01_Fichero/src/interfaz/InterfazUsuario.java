@@ -52,15 +52,49 @@ public class InterfazUsuario {
 		System.out.println("--------------------------");
 		System.out.println("Perfil de " + u.getNombre());
 		System.out.println("--------------------------");
-		int opcion = menu();
+		int opcion = 0;
+		do {
+			opcion = menu();
+			switch (opcion) {
+			case 1:
+				darAltaUsuario();
+				break;
+			}
+		}while(opcion != 0);
+	}
+
+	private void darAltaUsuario() {
+		Usuario usuario = pedirDatos();
+		int respuesta = gu.guardar(usuario);
+		switch (respuesta) {
+		case 1:
+			System.out.println("Usuario en blanco o con solo espacios en blanco");
+			break;
+		case 2:
+			System.out.println("Password en blanco o con solo espacios en blanco");
+			break;
+		case 3:
+			System.out.println("Usuario guardado con exito!! :) :)");
+			break;
+		case 666:
+			System.out.println("Error de acceso. Intentelo mas tarde. Codigo 666");
+			break;
+		}
 	}
 
 	private int menu() {
-		System.out.println("1 - Registrar usuario");
-		System.out.println("2 - Salir del programa");
-		
-		
-		return 0;
+		boolean correcto = false;
+		int opcion = 0;
+		while(!correcto) {
+			System.out.println("Elija una opción: ");
+			System.out.println("1 - Registrar usuario");
+			System.out.println("0 - Salir del programa");
+			opcion = sc.nextInt();
+			if(opcion >= 0 && opcion <= 1) {
+				correcto = true;
+			}
+		}		
+		return opcion;
 	}
 
 	private Usuario pedirDatos() {

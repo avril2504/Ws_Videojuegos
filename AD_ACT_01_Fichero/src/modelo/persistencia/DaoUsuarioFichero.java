@@ -2,6 +2,7 @@ package modelo.persistencia;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
@@ -51,8 +52,14 @@ public class DaoUsuarioFichero {
 	 * entrada salida
 	 */
 	public void registrar(Usuario u) throws Exception{
+		File f = new File(NOMBRE_FICHERO);
+		if(!f.exists()) {
+			throw new Exception("Fichero NO existe! :(");
+		}
+		
 		try(FileWriter fw = new FileWriter(NOMBRE_FICHERO,true);
 			BufferedWriter bw = new BufferedWriter(fw)){
+			bw.newLine();
 			bw.write(u.toString());
 		}catch(Exception e) {
 			throw e;
