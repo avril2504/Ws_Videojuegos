@@ -15,7 +15,7 @@ public class DaoVideojuegoFichero {
 	private static final String VIDEOJUEGO_FICHERO = "Videojuegos.txt";
 	
 	public List<Videojuego> listaViediojuego()throws Exception{
-		List<Videojuego> viedojuegos = new ArrayList<Videojuego>();
+		List<Videojuego> videojuegos = new ArrayList<Videojuego>();
 		
 		try (FileReader fr = new FileReader(VIDEOJUEGO_FICHERO);
 			BufferedReader br = new BufferedReader(fr)){
@@ -31,7 +31,8 @@ public class DaoVideojuegoFichero {
 				v.setNombre(nombreVideojuego);
 				v.setCompania(compania);
 				v.setNota(nota);
-				((List<Videojuego>) v).add(v);
+				videojuegos.add(v);
+				
 				
 			}
 			
