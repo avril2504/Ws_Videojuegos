@@ -6,6 +6,8 @@ public class Videojuego {
 	private String nombre;
 	private String compania;
 	private int nota;
+	
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -43,6 +45,7 @@ public class Videojuego {
 	public String toString() {
 		return nombre + "_" + compania + "_" + nota;
 	}
+
 	
 	
 
