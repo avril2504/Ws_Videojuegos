@@ -14,6 +14,14 @@ public class DaoVideojuegoFichero {
 
 	private static final String VIDEOJUEGO_FICHERO = "Videojuegos.txt";
 	
+	
+	/**
+	 * Método que lee todos los videojuegos almacenados en el fichero "Videojuegos.txt"
+	 * y lo agrega a una lista viegojuegos
+	 *
+	 * @return videojuego que contiene todos los videojuegos leídos del fichero.
+	 * @throws Exception si ocurre algún problema en el acceso o la lectura del fichero.
+	 */
 	public List<Videojuego> listaViediojuego()throws Exception{
 		List<Videojuego> videojuegos = new ArrayList<Videojuego>();
 		
@@ -43,6 +51,15 @@ public class DaoVideojuegoFichero {
 		
 	}
 	
+	/**
+	 * Método que dado un nombre pasado por parametro busca su coincidencia
+	 * en el fichero "Videojuegos.txt" y en caso de que lo encuentre lo devuelve
+	 * junto con su compania y nota
+	 * @param nombre el nombre a buscar en el fichero
+	 * @return videojuego en caso de que este en en fichero, null en caso contrario
+	 * @throws Exception, en caso de que haya algún problema en el fichero de 
+	 * entrada salida
+	 */
 	public Videojuego getByVideojuego(String nombre) throws Exception{
 		Videojuego videojuego = null;
 		
