@@ -22,7 +22,7 @@ public class DaoVideojuegoFichero {
 	 * @return videojuego que contiene todos los videojuegos leídos del fichero.
 	 * @throws Exception si ocurre algún problema en el acceso o la lectura del fichero.
 	 */
-	public List<Videojuego> listaViediojuego() throws Exception {
+	public List<Videojuego> listaVideojuego() throws Exception {
 	    List<Videojuego> videojuegos = new ArrayList<>();
 
 	    try (FileReader fr = new FileReader(VIDEOJUEGO_FICHERO);

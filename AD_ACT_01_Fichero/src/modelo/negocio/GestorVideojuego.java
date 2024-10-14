@@ -81,7 +81,7 @@ public class GestorVideojuego {
      */
     public List<Videojuego> listarVideojuegos() {
         try {
-            return dvf.listaViediojuego();
+            return dvf.listaVideojuego();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
