@@ -55,15 +55,15 @@ public class GestorVideojuego {
 
         dvf = new DaoVideojuegoFichero();
         try {
-            if (v.getNombre() == null && v.getNombre().isBlank() && v.getNombre().length() < 3) {
+            if (v.getNombre() == null || v.getNombre().isBlank()|| v.getNombre().length() < 3) {
                 return 1; 
             }
 
-            if (v.getCompania() == null && v.getCompania().isBlank() && v.getCompania().length() < 5) {
+            if (v.getCompania() == null || v.getCompania().isBlank() || v.getCompania().length() < 5) {
                 return 2; 
             }
 
-            if (v.getNota() < 0 && v.getNota() > 100) {
+            if (v.getNota() < 0 || v.getNota() > 100) {
                 return 3; 
             }
 
@@ -88,7 +88,5 @@ public class GestorVideojuego {
         }
     }
 
-    
-    
-    
+   
 }
